@@ -1,0 +1,50 @@
+--DROP TABLE 'gasto';
+
+CREATE TABLE gasto (
+	idGasto INTEGER PRIMARY KEY autoincrement,
+	costo INTEGER,
+	fecha TIMESTAMP,
+	insumoVariable TEXT,
+	idInsumo INTEGER,
+	currency TEXT
+);
+
+INSERT INTO  `gasto` (`costo` , `fecha` ,  `insumoVariable` , `idInsumo` , `currency` ) 
+VALUES (10,  '1/3/2013 21:23:12', 'Ejemplo', 1, 'ARS' ) ;
+
+
+--DROP TABLE 'Ingreso';
+
+CREATE TABLE ingreso (
+	idIngreso INTEGER PRIMARY KEY autoincrement,
+	cantidad INTEGER,
+	fecha TIMESTAMP,
+	descripcion TEXT,
+	idTipo INTEGER,
+	diezmoApartado BOOLEAN,
+	currency TEXT
+);
+INSERT INTO  `ingreso` (`cantidad` , `fecha`, `descripcion`, `idTipo`, `diezmoApartado`, `currency` ) 
+VALUES (100,  '12/11/2020 23:07:15', 'Milas de pollo', 1, "true", 'ARS' );
+
+
+--DROP TABLE 'Tipo';
+CREATE TABLE tipo (
+	idTipo INTEGER PRIMARY KEY autoincrement,
+	nombre TEXT
+);
+INSERT INTO  `tipo` (`costo` , `fecha`, `descripcion`, `idTipo`, `diezmoApartado`, `currency` ) 
+VALUES (100,  '12/11/2020 23:07:15', 'Milas de pollo', 1, true, 'ARS' ) ;
+
+--DROP TABLE 'InsumoFijo';
+CREATE TABLE insumoFijo (
+	idInsumoFijo INTEGER PRIMARY KEY autoincrement,
+	nombre TEXT
+);
+INSERT INTO `insumoFijo` (`nombre`) 
+VALUES ("-");
+
+
+--DROP TABLE 'currencyPurchase';
+
+

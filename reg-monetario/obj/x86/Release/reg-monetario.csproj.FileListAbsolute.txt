@@ -1,0 +1,44 @@
+C:\Users\Demisgero\AppData\Local\Temporary Projects\reg-monetario\bin\Release\reg-monetario.exe
+C:\Users\Demisgero\AppData\Local\Temporary Projects\reg-monetario\bin\Release\reg-monetario.pdb
+C:\Users\Demisgero\AppData\Local\Temporary Projects\reg-monetario\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Demisgero\AppData\Local\Temporary Projects\reg-monetario\obj\x86\Release\reg_monetario.Properties.Resources.resources
+C:\Users\Demisgero\AppData\Local\Temporary Projects\reg-monetario\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\Demisgero\AppData\Local\Temporary Projects\reg-monetario\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Users\Demisgero\AppData\Local\Temporary Projects\reg-monetario\obj\x86\Release\reg-monetario.exe
+C:\Users\Demisgero\AppData\Local\Temporary Projects\reg-monetario\obj\x86\Release\reg-monetario.pdb
+C:\Users\Demisgero\AppData\Local\Temporary Projects\reg-monetario\obj\x86\Release\reg_monetario.Form1.resources
+C:\Users\Demisgero\Documents\año 2012\programacion 2\con base de datos en casa\reg-monetario\reg-monetario\obj\x86\Release\reg-monetario.exe
+C:\Users\Demisgero\Documents\año 2012\programacion 2\con base de datos en casa\reg-monetario\reg-monetario\obj\x86\Release\reg-monetario.pdb
+C:\Users\Demisgero\Documents\año 2012\programacion 2\con base de datos en casa\reg-monetario\reg-monetario\bin\Release\reg-monetario.exe
+C:\Users\Demisgero\Documents\año 2012\programacion 2\con base de datos en casa\reg-monetario\reg-monetario\bin\Release\reg-monetario.pdb
+C:\Users\Demisgero\Documents\año 2012\programacion 2\con base de datos en casa\reg-monetario\reg-monetario\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Demisgero\Documents\año 2012\programacion 2\con base de datos en casa\reg-monetario\reg-monetario\obj\x86\Release\reg_monetario.FMPrincipal.resources
+C:\Users\Demisgero\Documents\año 2012\programacion 2\con base de datos en casa\reg-monetario\reg-monetario\obj\x86\Release\reg_monetario.Properties.Resources.resources
+C:\Users\Demisgero\Documents\año 2012\programacion 2\con base de datos en casa\reg-monetario\reg-monetario\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\Demisgero\Documents\año 2012\programacion 2\con base de datos en casa\reg-monetario\reg-monetario\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Users\Demisgero\Documents\año 2012\programacion 2\con base de datos en casa\reg-monetario1.0\reg-monetario\obj\x86\Release\reg-monetario.exe
+C:\Users\Demisgero\Documents\año 2012\programacion 2\con base de datos en casa\reg-monetario1.0\reg-monetario\obj\x86\Release\reg-monetario.pdb
+C:\Users\Demisgero\Documents\año 2012\programacion 2\con base de datos en casa\reg-monetario1.0\reg-monetario\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Demisgero\Documents\año 2012\programacion 2\con base de datos en casa\reg-monetario1.0\reg-monetario\obj\x86\Release\reg_monetario.FMPrincipal.resources
+C:\Users\Demisgero\Documents\año 2012\programacion 2\con base de datos en casa\reg-monetario1.0\reg-monetario\obj\x86\Release\reg_monetario.Properties.Resources.resources
+C:\Users\Demisgero\Documents\año 2012\programacion 2\con base de datos en casa\reg-monetario1.0\reg-monetario\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\Demisgero\Documents\año 2012\programacion 2\con base de datos en casa\reg-monetario1.0\reg-monetario\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Users\Demisgero\Documents\año 2012\programacion 2\con base de datos en casa\reg-monetario1.0\reg-monetario\bin\Release\reg-monetario.exe
+C:\Users\Demisgero\Documents\año 2012\programacion 2\con base de datos en casa\reg-monetario1.0\reg-monetario\bin\Release\reg-monetario.pdb
+C:\Users\Demisgero\Documents\año 2012\programacion 2\con base de datos en casa\reg-monetario1.0\reg-monetario\bin\Release\System.Data.SQLite.dll
+C:\Users\Demisgero\Documents\año 2012\programacion 2\con base de datos en casa\reg-monetario1.0\reg-monetario\obj\x86\Release\reg_monetario.ABMInsumoFijo.resources
+C:\Users\Demisgero\Documents\año 2012\programacion 2\con base de datos en casa\reg-monetario1.0\reg-monetario\obj\x86\Release\reg_monetario.FMEstadisticas.resources
+C:\Users\Demisgero\Documents\año 2013\C#\reg-monetario1.0\reg-monetario\obj\x86\Release\reg-monetario.exe
+C:\Users\Demisgero\Documents\año 2013\C#\reg-monetario1.0\reg-monetario\obj\x86\Release\reg-monetario.pdb
+C:\Users\Demisgero\Documents\año 2013\C#\reg-monetario1.0\reg-monetario\bin\Release\reg-monetario.exe
+C:\Users\Demisgero\Documents\año 2013\C#\reg-monetario1.0\reg-monetario\bin\Release\reg-monetario.pdb
+C:\Users\Demisgero\Documents\año 2013\C#\reg-monetario1.0\reg-monetario\bin\Release\System.Data.SQLite.dll
+C:\Users\Demisgero\Documents\año 2013\C#\reg-monetario1.0\reg-monetario\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Demisgero\Documents\año 2013\C#\reg-monetario1.0\reg-monetario\obj\x86\Release\reg_monetario.ABMInsumoFijo.resources
+C:\Users\Demisgero\Documents\año 2013\C#\reg-monetario1.0\reg-monetario\obj\x86\Release\reg_monetario.FMEstadisticas.resources
+C:\Users\Demisgero\Documents\año 2013\C#\reg-monetario1.0\reg-monetario\obj\x86\Release\reg_monetario.FMPrincipal.resources
+C:\Users\Demisgero\Documents\año 2013\C#\reg-monetario1.0\reg-monetario\obj\x86\Release\reg_monetario.Properties.Resources.resources
+C:\Users\Demisgero\Documents\año 2013\C#\reg-monetario1.0\reg-monetario\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\Demisgero\Documents\año 2013\C#\reg-monetario1.0\reg-monetario\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Users\Demisgero\Desktop\reg-monetario1.0\reg-monetario\obj\x86\Release\reg-monetario.exe
+C:\Users\Demisgero\Desktop\reg-monetario1.0\reg-monetario\obj\x86\Release\reg-monetario.pdb
