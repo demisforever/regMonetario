@@ -173,7 +173,7 @@ namespace reg_monetario
         }
 
 
-        //metodo para que en el campo "Cantidad" solo se ingresen num enteros
+        //metodo para que en el campo "Cantidad" solo se ingresen num decimales (float)
         private void textBox1Pesos_TextChanged(object sender, KeyPressEventArgs e)
         {
             if (Char.IsDigit(e.KeyChar))
@@ -188,7 +188,7 @@ namespace reg_monetario
             {
                 e.Handled = false;
             }
-            else if (e.KeyChar == 45)
+            else if (e.KeyChar == 45 || e.KeyChar ==44)
             {
                 e.Handled = false;
             }
