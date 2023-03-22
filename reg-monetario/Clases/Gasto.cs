@@ -8,7 +8,7 @@ namespace reg_monetario.Clases
     public class Gasto
     {
         int id;
-        int costo;
+        double costo;
         DateTime fecha;
         string insumoVariable;
         string currency;
@@ -18,7 +18,7 @@ namespace reg_monetario.Clases
         {
         }
 
-        public Gasto(int id, int costo, DateTime fecha, string insumoVariable, string currency, InsumoFijo insumoFijo)
+        public Gasto(int id, double costo, DateTime fecha, string insumoVariable, string currency, InsumoFijo insumoFijo)
         {
             this.id = id;
             this.costo = costo;
@@ -34,7 +34,7 @@ namespace reg_monetario.Clases
             get { return id; }
         }
 
-        public int Costo
+        public double Costo
         {
             set { costo = value; }
             get { return costo; }

@@ -80,7 +80,7 @@ namespace reg_monetario
         private void gastosIngresos(DateTime anioMes)
         {
             lblMes.Text = trackBarMeses.Value.ToString();
-            int gas = 0;
+            double gas = 0;
             float ing = 0;
 
             foreach (Gasto ga in DatosGasto.GetAll())
@@ -106,7 +106,7 @@ namespace reg_monetario
 
         private void gastosIngresosAn(int anio)
         {
-            int gas = 0;
+            double gas = 0;
             float ing = 0;
 
             foreach (Gasto ga in DatosGasto.GetAll())
@@ -136,7 +136,7 @@ namespace reg_monetario
 
         private void cantDineroMes(int x)
         {
-            int m1 = 0, m2 = 0, m3 = 0, m4 = 0, m5 = 0, m6 = 0, m7 = 0, m8 = 0, m9 = 0, m10 = 0, m11 = 0, m12 = 0;
+            double m1 = 0, m2 = 0, m3 = 0, m4 = 0, m5 = 0, m6 = 0, m7 = 0, m8 = 0, m9 = 0, m10 = 0, m11 = 0, m12 = 0;
 
             foreach (Gasto ga in DatosGasto.GetAll())
             {
@@ -171,7 +171,7 @@ namespace reg_monetario
 
         private void cantDineroAnio()
         {
-            int a2013 = 0, a2014 = 0, a2015 = 0, a2016 = 0, a2017 = 0, a2018 = 0, a2019 = 0, a2020 = 0, a2021 = 0;
+            double a2013 = 0, a2014 = 0, a2015 = 0, a2016 = 0, a2017 = 0, a2018 = 0, a2019 = 0, a2020 = 0, a2021 = 0;
 
             foreach (Gasto ga in DatosGasto.GetAll())
             {

@@ -34,7 +34,7 @@ namespace reg_monetario
         }
 
         //Déficit Superávit
-        private void deficitSuperavit(float i, float g)
+        private void deficitSuperavit(float i, double g)
         {
             if (i > g)
             {
@@ -74,7 +74,7 @@ namespace reg_monetario
 
             //en el titulo aparecera la fecha del resumen de cuenta
             labelArribaLista.Text = ("Resumen de la cuenta del mes " + gUltimo.Fecha.Month.ToString() + " del " + gUltimo.Fecha.Year.ToString() + ". Ultimo mes registrado");
-            float totGa = 0;
+            double totGa = 0;
 
             //DateTime dtUltimo = DateTimePicker.date
 
@@ -213,7 +213,7 @@ namespace reg_monetario
             //en el titulo aparecera la fecha del resumen de cuenta
             labelArribaLista.Text = ("Resumen de cuenta de toda la carga:");
 
-            int tot = 0;
+            double tot = 0;
             foreach (Gasto g in DatosGasto.GetAll())//cargamos la datagrid de gastos
             {
                 gastoBindingSource.Add(g);
@@ -281,7 +281,7 @@ namespace reg_monetario
 
             InsumoFijo inf = DatosInsumoFijo.GetAll()[comboBoxIFijo.SelectedIndex];//seleccionamos un insumo fijo (como objeto) del combobox
 
-            int tot = 0;//para la suma total de dinero gastado
+            double tot = 0;//para la suma total de dinero gastado
             int x = 0;//para ver si cargo algo en la datagrid
 
 
@@ -371,7 +371,7 @@ namespace reg_monetario
             gastoBindingSource.Clear();//limpiamos la lista
             labelArribaLista.Text = ("Resumen de la cuenta del mes " + m + " del " + a);
 
-            float tot = 0;
+            double tot = 0;
             foreach (Gasto g in DatosGasto.GetAll())//cargamos la datagrid de gastos
             {
                 if (a == g.Fecha.Date.Year && m == g.Fecha.Date.Month)
@@ -393,7 +393,7 @@ namespace reg_monetario
 
             char[] chrBus = txtBxBuscar.Text.ToCharArray();//dividimos la palabra que buscamos en caracteres
 
-            int tot = 0;
+            double tot = 0;
             int n = 0;
             foreach (Gasto g in DatosGasto.GetAll())//cargamos la datagrid de gastos
             {

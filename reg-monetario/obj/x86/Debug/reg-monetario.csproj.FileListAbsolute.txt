@@ -85,7 +85,6 @@ C:\Users\demis.gerometta\Dropbox\reg-monetario1.0\reg-monetario\obj\x86\Debug\re
 C:\Users\sabalo\Dropbox\reg-monetario1.0\reg-monetario\bin\Debug\reg-monetario.exe
 C:\Users\sabalo\Dropbox\reg-monetario1.0\reg-monetario\bin\Debug\reg-monetario.pdb
 C:\Users\sabalo\Dropbox\reg-monetario1.0\reg-monetario\bin\Debug\System.Data.SQLite.dll
-C:\Users\sabalo\Dropbox\reg-monetario1.0\reg-monetario\obj\x86\Debug\reg-monetario.csprojResolveAssemblyReference.cache
 C:\Users\sabalo\Dropbox\reg-monetario1.0\reg-monetario\obj\x86\Debug\reg-monetario.csproj.ResolveComReference.cache
 C:\Users\sabalo\Dropbox\reg-monetario1.0\reg-monetario\obj\x86\Debug\reg_monetario.ABMInsumoFijo.resources
 C:\Users\sabalo\Dropbox\reg-monetario1.0\reg-monetario\obj\x86\Debug\reg_monetario.FMEstadisticas.resources
@@ -95,3 +94,6 @@ C:\Users\sabalo\Dropbox\reg-monetario1.0\reg-monetario\obj\x86\Debug\reg_monetar
 C:\Users\sabalo\Dropbox\reg-monetario1.0\reg-monetario\obj\x86\Debug\reg-monetario.csproj.GenerateResource.Cache
 C:\Users\sabalo\Dropbox\reg-monetario1.0\reg-monetario\obj\x86\Debug\reg-monetario.exe
 C:\Users\sabalo\Dropbox\reg-monetario1.0\reg-monetario\obj\x86\Debug\reg-monetario.pdb
+C:\Users\sabalo\Dropbox\reg-monetario1.0\reg-monetario\obj\x86\Debug\reg-monetario.csprojAssemblyReference.cache
+C:\Users\sabalo\Dropbox\reg-monetario1.0\reg-monetario\obj\x86\Debug\reg-monetario.csproj.CoreCompileInputs.cache
+C:\Users\sabalo\Dropbox\reg-monetario1.0\reg-monetario\obj\x86\Debug\reg-monetario.csproj.CopyComplete

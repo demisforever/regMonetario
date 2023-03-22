@@ -25,7 +25,7 @@ namespace reg_monetario.Datos
             {
                 Gasto g = new Gasto();
                 g.Id = obdr.GetInt32(0);
-                g.Costo = obdr.GetInt32(1);
+                g.Costo = obdr.GetDouble(1);
                 g.Fecha = obdr.GetDateTime(2);
                 try //si no vienen datos en los campos, no salta ningun error
                 {
