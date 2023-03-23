@@ -119,7 +119,8 @@ namespace reg_monetario
             }
             else
             {
-                g.Costo = int.Parse(textBox1Pesos.Text);//SelectionStart me cuenta la cantidad de numeros que ingreso
+                float num = float.Parse(textBox1Pesos.Text); //SelectionStart me cuenta la cantidad de numeros que ingreso
+                g.Costo = Math.Round(num, 2); // redondea los decimales a 2
                 if (MessageBox.Show("Esta seguro que desea guardar \"" + inf.Nombre + "\" de $" + textBox1Pesos.Text, "Atencion", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
                     DatosGasto.Save(g);
             }
