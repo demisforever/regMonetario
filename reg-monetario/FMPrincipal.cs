@@ -21,9 +21,10 @@ namespace reg_monetario
         {
             InitializeComponent();
 
+            CargarComboxAño();
+            comboBoxMes.SelectedIndex = DateTime.Now.Month - 1;//para que el combobox del mes arranque en el mes actual y no este en null
+            
             CargarComboxInsumosFijos();
-
-            ListarGastosMesActual();
 
             //mas adelande, guardar en un metodo
             List<string> currencyList = new List<string>();
@@ -31,6 +32,8 @@ namespace reg_monetario
             currencyList.Add("USD");
             currencyList.Add("BRS");
             currencyCboBox.DataSource = currencyList;
+
+            gastosPorFiltros();
         }
 
         //Déficit Superávit
@@ -57,14 +60,14 @@ namespace reg_monetario
             List<string> insfij = new List<string>();
             foreach (InsumoFijo infi in DatosInsumoFijo.GetAll())
             {
-                insfij.Add(infi.Nombre); 
+                insfij.Add(infi.Nombre);
             }
             comboBoxInsFijos.DataSource = insfij;//este es el combobox de la carga de datos
             comboBoxIFijo.DataSource = insfij;//este es el combobox de el manipuleo de la lista
         }
 
 
-        private void ListarGastosMesActual()
+        private void gastosPorFiltros()
         {
             gastoBindingSource.Clear();//limpiamos la lista
 
@@ -72,20 +75,18 @@ namespace reg_monetario
             Gasto gUltimo = new Gasto();
             gUltimo = DatosGasto.GetAll().Last();
 
-            //en el titulo aparecera la fecha del resumen de cuenta
-            labelArribaLista.Text = ("Resumen de la cuenta del mes " + gUltimo.Fecha.Month.ToString() + " del " + gUltimo.Fecha.Year.ToString() + ". Ultimo mes registrado");
             double totGa = 0;
 
-            //DateTime dtUltimo = DateTimePicker.date
+            InsumoFijo inf = DatosInsumoFijo.GetAll()[comboBoxIFijo.SelectedIndex];
+            string insFijo = checkBoxInsumoFij.Checked ? inf.IdInsumoFijo.ToString(): "" ;
+            string year = comboBoxAño.SelectedValue.ToString();
+            string month = comboBoxMes.SelectedItem.ToString();
+            string currency = currencyCboBox.SelectedItem.ToString();
 
-            foreach (Gasto g in DatosGasto.GetAll())//cargamos la datagrid de gastos
+            foreach (Gasto g in DatosGasto.GetGastoByAttributes(insFijo, year, month, "", currency))//cargamos la datagrid de gastos
             {
-                if (g.Fecha.Month == gUltimo.Fecha.Month && g.Fecha.Year == gUltimo.Fecha.Year)
-                {
-                    gastoBindingSource.Add(g);
-                    totGa = totGa + g.Costo;
-                }
-                
+                gastoBindingSource.Add(g);
+                totGa = totGa + g.Costo;
             }
             labelTotal.Text = ("Total: $" + totGa.ToString());
 
@@ -129,7 +130,7 @@ namespace reg_monetario
             textBox2InVariable.Clear();//cuando precionamos "guardar" se limpia el inbox
 
             //actualizamos
-            ListarGastosMesActual();//y la volvemos a cargar, entonces se actualiza la lista
+            gastosPorFiltros();//y la volvemos a cargar, entonces se actualiza la lista
         }
 
         //al hacer doblre clik abilita el btn guardar modificación
@@ -145,7 +146,7 @@ namespace reg_monetario
             DatosGasto.Update(g);
 
             //actualizamos
-            ListarGastosMesActual();//y la volvemos a cargar, entonces se actualiza la lista
+            gastosPorFiltros();//y la volvemos a cargar, entonces se actualiza la lista
 
             btnModifGasto.Visible = false;
         }
@@ -170,7 +171,7 @@ namespace reg_monetario
 
             //actualizamos la lista
             gastoBindingSource.Clear();//limpiamos la lista
-            ListarGastosMesActual();//y la volvemos a cargar, entonces se actualiza la lista
+            gastosPorFiltros();//y la volvemos a cargar, entonces se actualiza la lista
         }
 
 
@@ -211,9 +212,6 @@ namespace reg_monetario
         {
             gastoBindingSource.Clear();//limpiamos la lista
 
-            //en el titulo aparecera la fecha del resumen de cuenta
-            labelArribaLista.Text = ("Resumen de cuenta de toda la carga:");
-
             double tot = 0;
             foreach (Gasto g in DatosGasto.GetAll())//cargamos la datagrid de gastos
             {
@@ -228,26 +226,10 @@ namespace reg_monetario
         //hacemos click en el bt de "mes actual"
         private void btnMesactual_Click(object sender, EventArgs e)
         {
-            ListarGastosMesActual();
+            gastosPorFiltros();
         }
 
-        //activacion de los combobox, quedan habilitados
-        private void checkBoxRangoFecha_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxRangoFecha.Checked)
-            {
-                comboBoxAño.Enabled = true;
-                comboBoxMes.Enabled = true;
 
-                comboBoxMes.SelectedIndex = DateTime.Now.Month - 1;//para que el combobox del mes arranque en el mes actual y no este en null
-                CargarComboxAño();
-            }
-            else
-            {
-                comboBoxAño.Enabled = false;
-                comboBoxMes.Enabled = false;
-            }
-        }
         private void checkBoxInsumoFij_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxInsumoFij.Checked)
@@ -275,113 +257,17 @@ namespace reg_monetario
         }
 
 
-        //aqui hacemos los filtros para la lista --- esto todavia esta a modificar!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        private void button1Ver_Click(object sender, EventArgs e)
-        {
-            gastoBindingSource.Clear();//limpiamos la lista
-
-            InsumoFijo inf = DatosInsumoFijo.GetAll()[comboBoxIFijo.SelectedIndex];//seleccionamos un insumo fijo (como objeto) del combobox
-
-            double tot = 0;//para la suma total de dinero gastado
-            int x = 0;//para ver si cargo algo en la datagrid
-
-
-            foreach (Gasto g in DatosGasto.GetAll())//cargamos la datagrid de gastos
-            {
-                if (checkBoxRangoFecha.Checked && checkBoxInsumoFij.Checked == false)//solo una fecha determinada
-                {
-                    //en el titulo aparecera la fecha del resumen de cuenta
-                    labelArribaLista.Text = ("Resumen de la cuenta del mes " + comboBoxMes.Text + " del " + comboBoxAño.Text);
-
-                    //solo mostrara el mes y el año que seleccionamos aca
-                    if (int.Parse(comboBoxAño.Text) == g.Fecha.Date.Year && int.Parse(comboBoxMes.Text) == g.Fecha.Date.Month)
-                    {
-                        gastoBindingSource.Add(g);
-                        tot = tot + g.Costo;
-                        x = x + 1;
-                    }
-                }
-                if (checkBoxInsumoFij.Checked && checkBoxRangoFecha.Checked == false)//solo un insumo determinado
-                {
-                    labelArribaLista.Text = ("Resumen total de: " + inf.Nombre);//en el titulo aparecera la fecha del resumen de cuenta
-
-                    if (inf.IdInsumoFijo == g.InsumoFijo.IdInsumoFijo)
-                    {
-                        gastoBindingSource.Add(g);
-                        tot = tot + g.Costo;
-                        x = x + 1;
-                    }
-                }
-                if (checkBoxInsumoFij.Checked && checkBoxRangoFecha.Checked)//un insumo y una fecha especifica
-                {
-                    //en el titulo aparecera la fecha del resumen de cuenta
-                    labelArribaLista.Text = ("Resumen total de: " + inf.Nombre + " en el mes " + comboBoxMes.Text + " del " + comboBoxAño.Text);
-
-
-                    if (inf.IdInsumoFijo == g.InsumoFijo.IdInsumoFijo && int.Parse(comboBoxAño.Text) == g.Fecha.Date.Year && int.Parse(comboBoxMes.Text) == g.Fecha.Date.Month)
-                    {
-                        gastoBindingSource.Add(g);
-                        tot = tot + g.Costo;
-                        x = x + 1;
-                    }
-                }
-            }
-            labelTotal.Text = ("Total: $" + tot.ToString());//el total sera segun el resultado de la suma
-
-            
-
-            if (checkBoxRangoFecha.Checked == false && checkBoxInsumoFij.Checked == false)
-                MessageBox.Show("Debe especificar una fecha y/o Insumo Fijo. Vuelva a intentarlo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
-            {
-                if (x == 0)
-                {
-                    MessageBox.Show("No se encontraron datos guardados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                } 
-            }
-
-        }
-
         //botones para cambiar los meses (< y >)
-        int mesTotal = DateTime.Now.Month;
-        int anioTotal = DateTime.Now.Year;
         private void btnMenor_Click(object sender, EventArgs e)
         {
-            mesTotal = mesTotal - 1;
-            if (mesTotal == 0)
-            {
-                mesTotal = 12;
-                anioTotal = anioTotal - 1;
-            }
-            mesMenosMas(mesTotal, anioTotal);
+            comboBoxMes.SelectedItem = (int.Parse( comboBoxMes.SelectedItem.ToString()) -1).ToString();
+            gastosPorFiltros();
         }
 
         private void btnMayor_Click(object sender, EventArgs e)
         {
-            mesTotal = mesTotal + 1;
-            if (mesTotal == 13)
-            {
-                mesTotal = 1;
-                anioTotal = anioTotal + 1;
-            }
-            mesMenosMas(mesTotal, anioTotal);
-        }
-
-        public void mesMenosMas(int m, int a)
-        {
-            gastoBindingSource.Clear();//limpiamos la lista
-            labelArribaLista.Text = ("Resumen de la cuenta del mes " + m + " del " + a);
-
-            double tot = 0;
-            foreach (Gasto g in DatosGasto.GetAll())//cargamos la datagrid de gastos
-            {
-                if (a == g.Fecha.Date.Year && m == g.Fecha.Date.Month)
-                {
-                    gastoBindingSource.Add(g);
-                    tot = tot + g.Costo;
-                }
-            }
-            labelTotal.Text = ("Total: $" + tot.ToString());//el total sera segun el resultado de la suma
+            comboBoxMes.SelectedItem = (int.Parse(comboBoxMes.SelectedItem.ToString()) + 1).ToString();
+            gastosPorFiltros();
         }
 
         //metodos para la barra del Buscador
@@ -390,7 +276,6 @@ namespace reg_monetario
             gastoBindingSource.Clear();//limpiamos la lista
 
             //en el titulo aparecera la fecha del resumen de cuenta
-            labelArribaLista.Text = ("resultados de: \"" + txtBxBuscar.Text +"\"");
 
             char[] chrBus = txtBxBuscar.Text.ToCharArray();//dividimos la palabra que buscamos en caracteres
 
@@ -454,6 +339,11 @@ namespace reg_monetario
         private void GastosdataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void currencyCboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            gastosPorFiltros();
         }
     }
 }

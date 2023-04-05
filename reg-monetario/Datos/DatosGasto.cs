@@ -41,12 +41,25 @@ namespace reg_monetario.Datos
             return gastos;
         }
 
-        public static List<Gasto> GetLastDate(DateTime dateTime)//ordenado por fecha
+        public static List<Gasto> GetGastoByAttributes(string insFijo, string year, string month, string description, string currency)
         {
             List<Gasto> gastos = new List<Gasto>();
             Conexion.OpenConexion();
-            SQLiteCommand cmd = new SQLiteCommand("SELECT idGasto, costo, fecha, insumoVariable, idInsumo FROM Gasto WHERE fecha = @fecha ORDER BY fecha;");
-            cmd.Parameters.Add(new SQLiteParameter("@fecha", dateTime));
+            string query = "SELECT idGasto, costo, fecha, insumoVariable, currency, idInsumo FROM Gasto WHERE currency = @currency AND strftime('%Y-%m', fecha) = @yearmonth";
+            month = month.Length == 1 ? "0"+month : month; //agregmos el 0 adelante si es una sola sifra
+
+            if (insFijo.Length > 0) {
+                query += " AND idInsumo = @insFijo";
+            }
+            if (description.Length > 0) {
+                query += " AND insumoVariable = @description";
+            }
+            query += " ORDER BY fecha;"; //ordenado por fecha
+            SQLiteCommand cmd = new SQLiteCommand(query);
+            cmd.Parameters.Add(new SQLiteParameter("@insFijo", insFijo));
+            cmd.Parameters.Add(new SQLiteParameter("@yearmonth", year + "-" + month));
+            cmd.Parameters.Add(new SQLiteParameter("@description", description));
+            cmd.Parameters.Add(new SQLiteParameter("@currency", currency));
             cmd.Connection = Conexion.Connection;
             SQLiteDataReader obdr = cmd.ExecuteReader();
             Conexion.BlockConexion = true;
@@ -54,14 +67,15 @@ namespace reg_monetario.Datos
             {
                 Gasto g = new Gasto();
                 g.Id = obdr.GetInt32(0);
-                g.Costo = obdr.GetInt32(1);
+                g.Costo = obdr.GetDouble(1);
                 g.Fecha = obdr.GetDateTime(2);
                 try //si no vienen datos en los campos, no salta ningun error
                 {
                     g.InsumoVariable = obdr.GetString(3);
+                    g.Currency = obdr.GetString(4);
                 }
                 catch { }
-                g.InsumoFijo = DatosInsumoFijo.GetById(obdr.GetInt32(4));
+                g.InsumoFijo = DatosInsumoFijo.GetById(obdr.GetInt32(5));
                 gastos.Add(g);
 
             }

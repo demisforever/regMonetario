@@ -43,9 +43,9 @@
             this.exportarAExelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ingresosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Cargar = new System.Windows.Forms.GroupBox();
-            this.currencyCboBox = new System.Windows.Forms.ComboBox();
             this.ButtomModificaciones = new System.Windows.Forms.Button();
             this.label4TipodInsumo = new System.Windows.Forms.Label();
+            this.currencyCboBox = new System.Windows.Forms.ComboBox();
             this.GastosdataGridView1 = new System.Windows.Forms.DataGridView();
             this.fechaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.insumoFijoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,10 +65,7 @@
             this.btnVerTodaLista = new System.Windows.Forms.Button();
             this.comboBoxIFijo = new System.Windows.Forms.ComboBox();
             this.checkBoxInsumoFij = new System.Windows.Forms.CheckBox();
-            this.checkBoxRangoFecha = new System.Windows.Forms.CheckBox();
-            this.button1Ver = new System.Windows.Forms.Button();
             this.btnModifGasto = new System.Windows.Forms.Button();
-            this.labelArribaLista = new System.Windows.Forms.Label();
             this.lblPatente = new System.Windows.Forms.Label();
             this.btnEstadisticas = new System.Windows.Forms.Button();
             this.btnMenor = new System.Windows.Forms.Button();
@@ -185,7 +182,6 @@
             // 
             // Cargar
             // 
-            this.Cargar.Controls.Add(this.currencyCboBox);
             this.Cargar.Controls.Add(this.ButtomModificaciones);
             this.Cargar.Controls.Add(this.label3Cantidad);
             this.Cargar.Controls.Add(this.label2Peso);
@@ -203,14 +199,6 @@
             this.Cargar.TabIndex = 17;
             this.Cargar.TabStop = false;
             this.Cargar.Text = "Cargar Gatos";
-            // 
-            // currencyCboBox
-            // 
-            this.currencyCboBox.FormattingEnabled = true;
-            this.currencyCboBox.Location = new System.Drawing.Point(203, 68);
-            this.currencyCboBox.Name = "currencyCboBox";
-            this.currencyCboBox.Size = new System.Drawing.Size(77, 24);
-            this.currencyCboBox.TabIndex = 15;
             // 
             // ButtomModificaciones
             // 
@@ -232,6 +220,15 @@
             this.label4TipodInsumo.Size = new System.Drawing.Size(149, 17);
             this.label4TipodInsumo.TabIndex = 11;
             this.label4TipodInsumo.Text = "Descripción (opcional)";
+            // 
+            // currencyCboBox
+            // 
+            this.currencyCboBox.FormattingEnabled = true;
+            this.currencyCboBox.Location = new System.Drawing.Point(867, 37);
+            this.currencyCboBox.Name = "currencyCboBox";
+            this.currencyCboBox.Size = new System.Drawing.Size(77, 24);
+            this.currencyCboBox.TabIndex = 15;
+            this.currencyCboBox.SelectedIndexChanged += new System.EventHandler(this.currencyCboBox_SelectedIndexChanged);
             // 
             // GastosdataGridView1
             // 
@@ -335,8 +332,6 @@
             this.groupBoxManipularLista.Controls.Add(this.btnVerTodaLista);
             this.groupBoxManipularLista.Controls.Add(this.comboBoxIFijo);
             this.groupBoxManipularLista.Controls.Add(this.checkBoxInsumoFij);
-            this.groupBoxManipularLista.Controls.Add(this.checkBoxRangoFecha);
-            this.groupBoxManipularLista.Controls.Add(this.button1Ver);
             this.groupBoxManipularLista.Location = new System.Drawing.Point(16, 297);
             this.groupBoxManipularLista.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxManipularLista.Name = "groupBoxManipularLista";
@@ -371,7 +366,6 @@
             // comboBoxAño
             // 
             this.comboBoxAño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxAño.Enabled = false;
             this.comboBoxAño.FormattingEnabled = true;
             this.comboBoxAño.Location = new System.Drawing.Point(179, 183);
             this.comboBoxAño.Margin = new System.Windows.Forms.Padding(4);
@@ -392,7 +386,6 @@
             // comboBoxMes
             // 
             this.comboBoxMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxMes.Enabled = false;
             this.comboBoxMes.FormattingEnabled = true;
             this.comboBoxMes.Items.AddRange(new object[] {
             "1",
@@ -459,29 +452,6 @@
             this.checkBoxInsumoFij.UseVisualStyleBackColor = true;
             this.checkBoxInsumoFij.CheckedChanged += new System.EventHandler(this.checkBoxInsumoFij_CheckedChanged);
             // 
-            // checkBoxRangoFecha
-            // 
-            this.checkBoxRangoFecha.AutoSize = true;
-            this.checkBoxRangoFecha.Location = new System.Drawing.Point(12, 143);
-            this.checkBoxRangoFecha.Margin = new System.Windows.Forms.Padding(4);
-            this.checkBoxRangoFecha.Name = "checkBoxRangoFecha";
-            this.checkBoxRangoFecha.Size = new System.Drawing.Size(132, 21);
-            this.checkBoxRangoFecha.TabIndex = 5;
-            this.checkBoxRangoFecha.Text = "fecha específica";
-            this.checkBoxRangoFecha.UseVisualStyleBackColor = true;
-            this.checkBoxRangoFecha.CheckedChanged += new System.EventHandler(this.checkBoxRangoFecha_CheckedChanged);
-            // 
-            // button1Ver
-            // 
-            this.button1Ver.Location = new System.Drawing.Point(203, 342);
-            this.button1Ver.Margin = new System.Windows.Forms.Padding(4);
-            this.button1Ver.Name = "button1Ver";
-            this.button1Ver.Size = new System.Drawing.Size(100, 28);
-            this.button1Ver.TabIndex = 4;
-            this.button1Ver.Text = "Ver";
-            this.button1Ver.UseVisualStyleBackColor = true;
-            this.button1Ver.Click += new System.EventHandler(this.button1Ver_Click);
-            // 
             // btnModifGasto
             // 
             this.btnModifGasto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -495,16 +465,6 @@
             this.btnModifGasto.UseVisualStyleBackColor = true;
             this.btnModifGasto.Visible = false;
             this.btnModifGasto.Click += new System.EventHandler(this.btnModifGasto_Click);
-            // 
-            // labelArribaLista
-            // 
-            this.labelArribaLista.AutoSize = true;
-            this.labelArribaLista.Location = new System.Drawing.Point(331, 41);
-            this.labelArribaLista.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelArribaLista.Name = "labelArribaLista";
-            this.labelArribaLista.Size = new System.Drawing.Size(13, 17);
-            this.labelArribaLista.TabIndex = 23;
-            this.labelArribaLista.Text = "-";
             // 
             // lblPatente
             // 
@@ -562,6 +522,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1082, 703);
+            this.Controls.Add(this.currencyCboBox);
             this.Controls.Add(this.btnMayor);
             this.Controls.Add(this.btnMenor);
             this.Controls.Add(this.Cargar);
@@ -570,7 +531,6 @@
             this.Controls.Add(this.GastosdataGridView1);
             this.Controls.Add(this.btnEstadisticas);
             this.Controls.Add(this.btnModifGasto);
-            this.Controls.Add(this.labelArribaLista);
             this.Controls.Add(this.bnEliminar);
             this.Controls.Add(this.lblPatente);
             this.Controls.Add(this.menuStrip1);
@@ -612,12 +572,9 @@
         private System.Windows.Forms.Button bnEliminar;
         private System.Windows.Forms.Label labelTotal;
         private System.Windows.Forms.GroupBox groupBoxManipularLista;
-        private System.Windows.Forms.Button button1Ver;
         private System.Windows.Forms.ComboBox comboBoxIFijo;
         private System.Windows.Forms.CheckBox checkBoxInsumoFij;
-        private System.Windows.Forms.CheckBox checkBoxRangoFecha;
         private System.Windows.Forms.Button btnModifGasto;
-        private System.Windows.Forms.Label labelArribaLista;
         private System.Windows.Forms.Button btnVerTodaLista;
         private System.Windows.Forms.Button btnUltiMesCarg;
         private System.Windows.Forms.ComboBox comboBoxMes;
