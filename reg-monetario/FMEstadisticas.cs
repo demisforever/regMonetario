@@ -171,7 +171,7 @@ namespace reg_monetario
 
         private void cantDineroAnio()
         {
-            double a2013 = 0, a2014 = 0, a2015 = 0, a2016 = 0, a2017 = 0, a2018 = 0, a2019 = 0, a2020 = 0, a2021 = 0;
+            double a2013 = 0, a2014 = 0, a2015 = 0, a2016 = 0, a2017 = 0, a2018 = 0, a2019 = 0, a2020 = 0, a2021 = 0, a2022 = 0, a2023 = 0;
 
             foreach (Gasto ga in DatosGasto.GetAll())
             {
@@ -186,12 +186,14 @@ namespace reg_monetario
                     case 2019: a2019 = a2019 + ga.Costo; break;
                     case 2020: a2020 = a2020 + ga.Costo; break;
                     case 2021: a2021 = a2021 + ga.Costo; break;
+                    case 2022: a2022 = a2022 + ga.Costo; break;
+                    case 2023: a2023 = a2023 + ga.Costo; break;
                 }
             }
 
 
-            double[] yValues = { a2013, a2014, a2015, a2016, a2017, a2018, a2019, a2020, a2021 };
-            string[] xNames = { "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021" };
+            double[] yValues = { a2013, a2014, a2015, a2016, a2017, a2018, a2019, a2020, a2021, a2022, a2023 };
+            string[] xNames = { "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023" };
             chartEstadisticas.Series[0].Points.DataBindXY(xNames, yValues);
             chartEstadisticas.Series[0].IsValueShownAsLabel = true;//muestra el total arriba de la barra
 
