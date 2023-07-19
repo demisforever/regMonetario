@@ -17,7 +17,7 @@ namespace reg_monetario.Datos
         {
             List<Gasto> gastos = new List<Gasto>();
             Conexion.OpenConexion();
-            SQLiteCommand cmd = new SQLiteCommand("SELECT idGasto, costo, fecha, insumoVariable, currency, idInsumo FROM Gasto ORDER BY fecha;");
+            SQLiteCommand cmd = new SQLiteCommand("SELECT idGasto, costo, fecha, insumoVariable, currency, idInsumo, personId FROM Gasto ORDER BY fecha;");
             cmd.Connection = Conexion.Connection;
             SQLiteDataReader obdr = cmd.ExecuteReader();
             Conexion.BlockConexion = true;
@@ -34,6 +34,7 @@ namespace reg_monetario.Datos
                 }
                 catch { }
                 g.InsumoFijo = DatosInsumoFijo.GetById(obdr.GetInt32(5));
+                g.PersonId = obdr.GetInt32(6);
                 gastos.Add(g);
             }
             Conexion.BlockConexion = false;
@@ -45,7 +46,7 @@ namespace reg_monetario.Datos
         {
             List<Gasto> gastos = new List<Gasto>();
             Conexion.OpenConexion();
-            string query = "SELECT idGasto, costo, fecha, insumoVariable, currency, idInsumo FROM Gasto WHERE currency = @currency AND strftime('%Y-%m', fecha) = @yearmonth";
+            string query = "SELECT idGasto, costo, fecha, insumoVariable, currency, idInsumo, personId FROM Gasto WHERE currency = @currency AND strftime('%Y-%m', fecha) = @yearmonth";
             month = month.Length == 1 ? "0"+month : month; //agregmos el 0 adelante si es una sola sifra
 
             if (insFijo.Length > 0) {
@@ -76,6 +77,7 @@ namespace reg_monetario.Datos
                 }
                 catch { }
                 g.InsumoFijo = DatosInsumoFijo.GetById(obdr.GetInt32(5));
+                g.PersonId = obdr.GetInt32(6);
                 gastos.Add(g);
 
             }
@@ -87,12 +89,13 @@ namespace reg_monetario.Datos
         public static void Save(Gasto gastos)
         {
             Conexion.OpenConexion();
-            SQLiteCommand cmd = new SQLiteCommand("INSERT INTO Gasto (costo, fecha, insumoVariable, currency, idInsumo) VALUES (@costo, @fecha, @insumoVariable, @currency, @idInsumo);");
+            SQLiteCommand cmd = new SQLiteCommand("INSERT INTO Gasto (costo, fecha, insumoVariable, currency, idInsumo, personId) VALUES (@costo, @fecha, @insumoVariable, @currency, @idInsumo, @personId);");
             cmd.Parameters.Add(new SQLiteParameter("@costo", gastos.Costo));
             cmd.Parameters.Add(new SQLiteParameter("@fecha", gastos.Fecha));
             cmd.Parameters.Add(new SQLiteParameter("@insumoVariable", gastos.InsumoVariable));
             cmd.Parameters.Add(new SQLiteParameter("@currency", gastos.Currency));
             cmd.Parameters.Add(new SQLiteParameter("@idInsumo", gastos.InsumoFijo.IdInsumoFijo));
+            cmd.Parameters.Add(new SQLiteParameter("@personId", gastos.PersonId));
 
             cmd.Connection = Conexion.Connection;
             cmd.ExecuteNonQuery();
@@ -112,13 +115,14 @@ namespace reg_monetario.Datos
         public static void Update(Gasto gastos)
         {
             Conexion.OpenConexion();
-            SQLiteCommand cmd = new SQLiteCommand("UPDATE Gasto SET costo = @costo, fecha = @fecha, insumoVariable = @insumoVariable, currency = @currency, idInsumo = @idInsumo WHERE idGasto = @idGasto;");
+            SQLiteCommand cmd = new SQLiteCommand("UPDATE Gasto SET costo = @costo, fecha = @fecha, insumoVariable = @insumoVariable, currency = @currency, idInsumo = @idInsumo, personId = @personId WHERE idGasto = @idGasto;");
             cmd.Parameters.Add(new SQLiteParameter("@idGasto", gastos.Id));
             cmd.Parameters.Add(new SQLiteParameter("@costo", gastos.Costo));
             cmd.Parameters.Add(new SQLiteParameter("@fecha", gastos.Fecha));
             cmd.Parameters.Add(new SQLiteParameter("@insumoVariable", gastos.InsumoVariable));
             cmd.Parameters.Add(new SQLiteParameter("@currency", gastos.Currency));
             cmd.Parameters.Add(new SQLiteParameter("@idInsumo", gastos.InsumoFijo.IdInsumoFijo));
+            cmd.Parameters.Add(new SQLiteParameter("@personId", gastos.PersonId));
 
             cmd.Connection = Conexion.Connection;
             cmd.ExecuteNonQuery();

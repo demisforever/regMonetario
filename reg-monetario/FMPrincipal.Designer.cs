@@ -52,6 +52,7 @@
             this.insumoVariableDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.costoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currencyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PersonId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gastoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bnEliminar = new System.Windows.Forms.Button();
             this.labelTotal = new System.Windows.Forms.Label();
@@ -154,7 +155,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1082, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1107, 28);
             this.menuStrip1.TabIndex = 15;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -244,14 +245,15 @@
             this.insumoFijoDataGridViewTextBoxColumn,
             this.insumoVariableDataGridViewTextBoxColumn,
             this.costoDataGridViewTextBoxColumn,
-            this.currencyDataGridViewTextBoxColumn});
+            this.currencyDataGridViewTextBoxColumn,
+            this.PersonId});
             this.GastosdataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.GastosdataGridView1.DataSource = this.gastoBindingSource;
             this.GastosdataGridView1.GridColor = System.Drawing.Color.LightSkyBlue;
             this.GastosdataGridView1.Location = new System.Drawing.Point(335, 66);
             this.GastosdataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.GastosdataGridView1.Name = "GastosdataGridView1";
-            this.GastosdataGridView1.Size = new System.Drawing.Size(721, 572);
+            this.GastosdataGridView1.Size = new System.Drawing.Size(746, 572);
             this.GastosdataGridView1.TabIndex = 18;
             this.GastosdataGridView1.TabStop = false;
             this.GastosdataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GastosdataGridView1_CellContentClick);
@@ -291,9 +293,17 @@
             this.currencyDataGridViewTextBoxColumn.Name = "currencyDataGridViewTextBoxColumn";
             this.currencyDataGridViewTextBoxColumn.Width = 45;
             // 
+            // PersonId
+            // 
+            this.PersonId.DataPropertyName = "PersonId";
+            this.PersonId.HeaderText = "Person";
+            this.PersonId.Name = "PersonId";
+            this.PersonId.Width = 60;
+            // 
             // gastoBindingSource
             // 
             this.gastoBindingSource.DataSource = typeof(reg_monetario.Clases.Gasto);
+            this.gastoBindingSource.CurrentChanged += new System.EventHandler(this.gastoBindingSource_CurrentChanged);
             // 
             // bnEliminar
             // 
@@ -313,7 +323,7 @@
             this.labelTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTotal.AutoSize = true;
             this.labelTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTotal.Location = new System.Drawing.Point(904, 646);
+            this.labelTotal.Location = new System.Drawing.Point(929, 646);
             this.labelTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTotal.Name = "labelTotal";
             this.labelTotal.Size = new System.Drawing.Size(71, 24);
@@ -471,7 +481,7 @@
             this.lblPatente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPatente.AutoSize = true;
             this.lblPatente.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblPatente.Location = new System.Drawing.Point(940, 687);
+            this.lblPatente.Location = new System.Drawing.Point(965, 687);
             this.lblPatente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPatente.Name = "lblPatente";
             this.lblPatente.Size = new System.Drawing.Size(144, 17);
@@ -484,7 +494,7 @@
             this.btnEstadisticas.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.btnEstadisticas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEstadisticas.ForeColor = System.Drawing.Color.ForestGreen;
-            this.btnEstadisticas.Location = new System.Drawing.Point(944, 1);
+            this.btnEstadisticas.Location = new System.Drawing.Point(969, 1);
             this.btnEstadisticas.Margin = new System.Windows.Forms.Padding(4);
             this.btnEstadisticas.Name = "btnEstadisticas";
             this.btnEstadisticas.Size = new System.Drawing.Size(112, 28);
@@ -496,7 +506,7 @@
             // btnMenor
             // 
             this.btnMenor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMenor.Location = new System.Drawing.Point(962, 34);
+            this.btnMenor.Location = new System.Drawing.Point(987, 34);
             this.btnMenor.Margin = new System.Windows.Forms.Padding(4);
             this.btnMenor.Name = "btnMenor";
             this.btnMenor.Size = new System.Drawing.Size(36, 28);
@@ -508,7 +518,7 @@
             // btnMayor
             // 
             this.btnMayor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMayor.Location = new System.Drawing.Point(1020, 34);
+            this.btnMayor.Location = new System.Drawing.Point(1045, 34);
             this.btnMayor.Margin = new System.Windows.Forms.Padding(4);
             this.btnMayor.Name = "btnMayor";
             this.btnMayor.Size = new System.Drawing.Size(36, 28);
@@ -521,7 +531,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1082, 703);
+            this.ClientSize = new System.Drawing.Size(1107, 703);
             this.Controls.Add(this.currencyCboBox);
             this.Controls.Add(this.btnMayor);
             this.Controls.Add(this.btnMenor);
@@ -596,6 +606,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn insumoVariableDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn costoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn currencyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PersonId;
     }
 }
 

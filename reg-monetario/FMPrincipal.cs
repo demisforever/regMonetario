@@ -113,6 +113,7 @@ namespace reg_monetario
             g.InsumoVariable = textBox2InVariable.Text;
             g.Currency = currencyCboBox.SelectedValue.ToString();
             g.InsumoFijo = inf;
+            g.PersonId = 1; // se hardcodea personId 1 por el momento
 
             if (string.IsNullOrEmpty(textBox1Pesos.Text))//no nulo, el campo de "cantidad"
             {
@@ -344,6 +345,11 @@ namespace reg_monetario
         private void currencyCboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             gastosPorFiltros();
+        }
+
+        private void gastoBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

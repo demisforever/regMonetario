@@ -13,12 +13,13 @@ namespace reg_monetario.Clases
         string insumoVariable;
         string currency;
         InsumoFijo insumoFijo;
+        int personId;
 
         public Gasto()
         {
         }
 
-        public Gasto(int id, double costo, DateTime fecha, string insumoVariable, string currency, InsumoFijo insumoFijo)
+        public Gasto(int id, double costo, DateTime fecha, string insumoVariable, string currency, InsumoFijo insumoFijo, int personId)
         {
             this.id = id;
             this.costo = costo;
@@ -26,6 +27,7 @@ namespace reg_monetario.Clases
             this.insumoVariable = insumoVariable;
             this.insumoFijo = insumoFijo;
             this.currency = currency;
+            this.personId = personId;
         }
 
         public int Id
@@ -62,6 +64,11 @@ namespace reg_monetario.Clases
         {
             set { insumoFijo = value; }
             get { return insumoFijo; }
+        }
+        public int PersonId
+        {
+            set { personId = value; }
+            get { return personId; }
         }
     }
 }
