@@ -82,8 +82,9 @@ namespace reg_monetario
             string year = comboBoxAño.SelectedValue.ToString();
             string month = comboBoxMes.SelectedItem.ToString();
             string currency = currencyCboBox.SelectedItem.ToString();
+            decimal cost = decimal.TryParse(textBoxSearchCost.Text, out cost)? decimal.Parse(textBoxSearchCost.Text) : 00;
 
-            foreach (Gasto g in DatosGasto.GetGastoByAttributes(insFijo, year, month, "", currency))//cargamos la datagrid de gastos
+            foreach (Gasto g in DatosGasto.GetGastoByAttributes(insFijo, year, month, "", currency, cost))//cargamos la datagrid de gastos
             {
                 gastoBindingSource.Add(g);
                 totGa = totGa + g.Costo;
@@ -350,6 +351,11 @@ namespace reg_monetario
         private void gastoBindingSource_CurrentChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBoxSearchCost_TextChanged(object sender, EventArgs e)
+        {
+            gastosPorFiltros();
         }
     }
 }

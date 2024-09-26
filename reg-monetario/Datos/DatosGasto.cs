@@ -42,7 +42,7 @@ namespace reg_monetario.Datos
             return gastos;
         }
 
-        public static List<Gasto> GetGastoByAttributes(string insFijo, string year, string month, string description, string currency)
+        public static List<Gasto> GetGastoByAttributes(string insFijo, string year, string month, string description, string currency, decimal cost)
         {
             List<Gasto> gastos = new List<Gasto>();
             Conexion.OpenConexion();
@@ -55,12 +55,17 @@ namespace reg_monetario.Datos
             if (description.Length > 0) {
                 query += " AND insumoVariable = @description";
             }
+            if (cost != 00)
+            {
+                query += " AND costo = @cost";
+            }
             query += " ORDER BY fecha;"; //ordenado por fecha
             SQLiteCommand cmd = new SQLiteCommand(query);
             cmd.Parameters.Add(new SQLiteParameter("@insFijo", insFijo));
             cmd.Parameters.Add(new SQLiteParameter("@yearmonth", year + "-" + month));
             cmd.Parameters.Add(new SQLiteParameter("@description", description));
             cmd.Parameters.Add(new SQLiteParameter("@currency", currency));
+            cmd.Parameters.Add(new SQLiteParameter("@cost", cost));
             cmd.Connection = Conexion.Connection;
             SQLiteDataReader obdr = cmd.ExecuteReader();
             Conexion.BlockConexion = true;
