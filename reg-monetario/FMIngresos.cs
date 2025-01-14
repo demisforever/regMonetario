@@ -53,7 +53,7 @@ namespace reg_monetario
                     totDiezmo = totDiezmo + i.Cantidad;
                 }
             }
-            labelTotal.Text = "Total: $" + tot.ToString();
+            labelTotal.Text = ("Total: $" + tot.ToString("N2"));
             lblDiezmo.Text = "$" + (totDiezmo / 10).ToString() + "\n\n\n Desde: \n" + fDesdeDiezmo.ToString();
         }
 
@@ -230,7 +230,7 @@ namespace reg_monetario
                     }
                 }
             }
-            labelTotal.Text = ("Total: $" + tot.ToString());
+            labelTotal.Text = ("Total: $" + tot.ToString("N2"));
         }
 
         private void txtBxBuscarIn_Click(object sender, EventArgs e)
